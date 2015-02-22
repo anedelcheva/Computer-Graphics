@@ -1,17 +1,17 @@
-/* Описание на сцената:
+/* РћРїРёСЃР°РЅРёРµ РЅР° СЃС†РµРЅР°С‚Р°:
 
-    Сцената описва двама влюбени. Младежът предлага брак на дамата, като коленичи пред нея, държаш в ръката си годежен
-    пръстен. Дамата леко кима с глава в знак на съгласие. Тя е протегнала ръката си, за да вземе пръстена.
-    Дамата е подала ръката си на младежа.
+    РЎС†РµРЅР°С‚Р° РѕРїРёСЃРІР° РґРІР°РјР° РІР»СЋР±РµРЅРё. РњР»Р°РґРµР¶СЉС‚ РїСЂРµРґР»Р°РіР° Р±СЂР°Рє РЅР° РґР°РјР°С‚Р°, РєР°С‚Рѕ РєРѕР»РµРЅРёС‡Рё РїСЂРµРґ РЅРµСЏ, РґСЉСЂР¶Р°С€ РІ СЂСЉРєР°С‚Р° СЃРё РіРѕРґРµР¶РµРЅ
+    РїСЂСЉСЃС‚РµРЅ. Р”Р°РјР°С‚Р° Р»РµРєРѕ РєРёРјР° СЃ РіР»Р°РІР° РІ Р·РЅР°Рє РЅР° СЃСЉРіР»Р°СЃРёРµ. РўСЏ Рµ РїСЂРѕС‚РµРіРЅР°Р»Р° СЂСЉРєР°С‚Р° СЃРё, Р·Р° РґР° РІР·РµРјРµ РїСЂСЉСЃС‚РµРЅР°.
+    Р”Р°РјР°С‚Р° Рµ РїРѕРґР°Р»Р° СЂСЉРєР°С‚Р° СЃРё РЅР° РјР»Р°РґРµР¶Р°.
 
 */
 
 #include <math.h>
 #include <GL/glfw.h>
 
-#define nL 21	// брой точки в крайниците
-#define nH 50	// четен брой точки в главата
-#define nJ 16	// четен брой точки в ставите
+#define nL 21	// Р±СЂРѕР№ С‚РѕС‡РєРё РІ РєСЂР°Р№РЅРёС†РёС‚Рµ
+#define nH 50	// С‡РµС‚РµРЅ Р±СЂРѕР№ С‚РѕС‡РєРё РІ РіР»Р°РІР°С‚Р°
+#define nJ 16	// С‡РµС‚РµРЅ Р±СЂРѕР№ С‚РѕС‡РєРё РІ СЃС‚Р°РІРёС‚Рµ
 
 #define PI 3.141592653589793
 #define EPS 0.1
@@ -22,7 +22,7 @@
 
 void drawParallelepiped(float x, float y, float z, float a, float b, float c)
 {
-    // рисуване на стена откъм -Y
+    // СЂРёСЃСѓРІР°РЅРµ РЅР° СЃС‚РµРЅР° РѕС‚РєСЉРј -Y
     glBegin(GL_POLYGON);
         glNormal3f(0.0, +1.0, 0.0);
         glVertex3f(x-a, y+b, z+c);
@@ -31,7 +31,7 @@ void drawParallelepiped(float x, float y, float z, float a, float b, float c)
         glVertex3f(x-a, y+b, z-c);
     glEnd();
 
-    // рисуване на стена откъм Y
+    // СЂРёСЃСѓРІР°РЅРµ РЅР° СЃС‚РµРЅР° РѕС‚РєСЉРј Y
     glBegin(GL_POLYGON);
         glNormal3f(0.0, -1.0, 0.0);
         glVertex3f(x-a, y-b, z+c);
@@ -40,7 +40,7 @@ void drawParallelepiped(float x, float y, float z, float a, float b, float c)
         glVertex3f(x-a, y-b, z-c);
     glEnd();
 
-    // рисуване на стена откъм X
+    // СЂРёСЃСѓРІР°РЅРµ РЅР° СЃС‚РµРЅР° РѕС‚РєСЉРј X
     glBegin(GL_POLYGON);
         glNormal3f(-1.0, 0.0, 0.0);
         glVertex3f(x-a, y+b, z+c);
@@ -49,7 +49,7 @@ void drawParallelepiped(float x, float y, float z, float a, float b, float c)
         glVertex3f(x-a, y+b, z-c);
     glEnd();
 
-    // рисуване на стена откъм -X
+    // Г°ГЁГ±ГіГўГ Г­ГҐ Г­Г  Г±ГІГҐГ­Г  Г®ГІГЄГєГ¬ -X
     glBegin(GL_POLYGON);
         glNormal3f(+1.0, 0.0, 0.0);
         glVertex3f(x+a, y+b, z+c);
@@ -58,7 +58,7 @@ void drawParallelepiped(float x, float y, float z, float a, float b, float c)
         glVertex3f(x+a, y+b, z-c);
     glEnd();
 
-    // рисуване на стена откъм Z
+    // СЂРёСЃСѓРІР°РЅРµ РЅР° СЃС‚РµРЅР° РѕС‚РєСЉРј Z
     glBegin(GL_POLYGON);
         glNormal3f(0.0, 0.0, -1.0);
         glVertex3f(x-a, y+b, z-c);
@@ -67,7 +67,7 @@ void drawParallelepiped(float x, float y, float z, float a, float b, float c)
         glVertex3f(x+a, y+b, z-c);
     glEnd();
 
-    // рисуване на стена откъм -Z
+    // СЂРёСЃСѓРІР°РЅРµ РЅР° СЃС‚РµРЅР° РѕС‚РєСЉРј -Z
     glBegin(GL_POLYGON);
         glNormal3f(0.0, 0.0, +1.0);
         glVertex3f(x-a, y+b, z+c);
@@ -77,7 +77,7 @@ void drawParallelepiped(float x, float y, float z, float a, float b, float c)
     glEnd();
 }
 
-// дефиниция на 3D точка или вектор
+// РґРµС„РёРЅРёС†РёСЏ РЅР° 3D С‚РѕС‡РєР° РёР»Рё РІРµРєС‚РѕСЂ
 struct OKG_POINT
 {
     float x;
@@ -105,7 +105,7 @@ void drawTwoCylinders(float x, float y, float z, float r, float R, float h)
         float dz2r = r*sin(alpha+angle);
         float dz2R = R*sin(alpha+angle);
 
-        // рисуваме долната основа
+        // СЂРёСЃСѓРІР°РјРµ РґРѕР»РЅР°С‚Р° РѕСЃРЅРѕРІР°
         glBegin(GL_POLYGON);
             glNormal3f( 0, -1, 0 );
             glVertex3f(x+dx1r, y, z+dz1r);
@@ -114,7 +114,7 @@ void drawTwoCylinders(float x, float y, float z, float r, float R, float h)
             glVertex3f(x+dx2r, y, z+dz2r);
         glEnd();
 
-        // рисуваме горната основа
+        // СЂРёСЃСѓРІР°РјРµ РіРѕСЂРЅР°С‚Р° РѕСЃРЅРѕРІР°
         glBegin(GL_POLYGON);
             glNormal3f( 0, 1, 0 );
             glVertex3f(x+dx1r, y+h, z+dz1r);
@@ -123,7 +123,7 @@ void drawTwoCylinders(float x, float y, float z, float r, float R, float h)
             glVertex3f(x+dx2r, y+h, z+dz2r);
         glEnd();
 
-        // рисуваме вътрешната околна стена
+        // СЂРёСЃСѓРІР°РјРµ РІСЉС‚СЂРµС€РЅР°С‚Р° РѕРєРѕР»РЅР° СЃС‚РµРЅР°
         glBegin(GL_POLYGON);
             glNormal3f( cos(alpha),  0, sin(alpha));
             glVertex3f(x+dx1r, y, z+dz1r);
@@ -133,7 +133,7 @@ void drawTwoCylinders(float x, float y, float z, float r, float R, float h)
             glVertex3f(x+dx2r, y, z+dz2r);
         glEnd();
 
-        //рисуваме външната околна стена
+        //СЂРёСЃСѓРІР°РјРµ РІСЉРЅС€РЅР°С‚Р° РѕРєРѕР»РЅР° СЃС‚РµРЅР°
         glBegin(GL_POLYGON);
             glNormal3f( -cos(alpha),  0, -sin(alpha));
             glVertex3f(x+dx1R, y, z+dz1R);
@@ -146,7 +146,7 @@ void drawTwoCylinders(float x, float y, float z, float r, float R, float h)
     }
 }
 
-// векторно произведение на вектори
+// РІРµРєС‚РѕСЂРЅРѕ РїСЂРѕРёР·РІРµРґРµРЅРёРµ РЅР° РІРµРєС‚РѕСЂРё
 OKG_POINT vmul(OKG_POINT a, OKG_POINT b, OKG_POINT p)
 {
 	a = {x:a.x-p.x, y:a.y-p.y, z:a.z-p.z};
@@ -154,13 +154,13 @@ OKG_POINT vmul(OKG_POINT a, OKG_POINT b, OKG_POINT p)
 	return {x:a.y*b.z-a.z*b.y, y:a.z*b.x-a.x*b.z, z:a.x*b.y-a.y*b.x};
 }
 
-// пресмята декартови координати от сферични
+// РїСЂРµСЃРјСЏС‚Р° РґРµРєР°СЂС‚РѕРІРё РєРѕРѕСЂРґРёРЅР°С‚Рё РѕС‚ СЃС„РµСЂРёС‡РЅРё
 OKG_POINT spherical( float alpha, float beta, float r )
 {
     return {x:r*cosf(alpha)*cosf(beta), y:r*sinf(alpha)*cosf(beta), z:r*sinf(beta)};
 }
 
-// пресмята точка по крайник - линейна комбинация между ротационна синусоида и полусфера
+// РїСЂРµСЃРјСЏС‚Р° С‚РѕС‡РєР° РїРѕ РєСЂР°Р№РЅРёРє - Р»РёРЅРµР№РЅР° РєРѕРјР±РёРЅР°С†РёСЏ РјРµР¶РґСѓ СЂРѕС‚Р°С†РёРѕРЅРЅР° СЃРёРЅСѓСЃРѕРёРґР° Рё РїРѕР»СѓСЃС„РµСЂР°
 OKG_POINT limbal( float alpha, float beta, float from, float to, float width, float sx1, float sx2, float sy1, float sy2, float sz )
 {
     float k1 = sinf(beta)/2+0.5;
@@ -170,7 +170,7 @@ OKG_POINT limbal( float alpha, float beta, float from, float to, float width, fl
     return {x:(sx1*(1-k1)+sx2*k1)*r*cosf(alpha), y:(sy1*(1-k1)+sy2*k1)*r*sinf(alpha), z:sz*k1};
 }
 
-// изчислява издутина в диапазона от min до max
+// РёР·С‡РёСЃР»СЏРІР° РёР·РґСѓС‚РёРЅР° РІ РґРёР°РїР°Р·РѕРЅР° РѕС‚ min РґРѕ max
 double cosser( double t, double min, double max )
 {
 	if( min<=t && t<=max )
@@ -187,7 +187,7 @@ double cosser( double t, double min, double max )
 	return 0.5+0.5*cos( t/(max-min)*2*PI-PI );
 }
 
-// прилага n издутини, всяка със свои параметри: сила, диапазон по a, диапазон по b
+// РїСЂРёР»Р°РіР° n РёР·РґСѓС‚РёРЅРё, РІСЃСЏРєР° СЃСЉСЃ СЃРІРѕРё РїР°СЂР°РјРµС‚СЂРё: СЃРёР»Р°, РґРёР°РїР°Р·РѕРЅ РїРѕ a, РґРёР°РїР°Р·РѕРЅ РїРѕ b
 double smartRad( double a, double b, int n, float rads[][5] )
 {
 	double r = 1;
@@ -196,7 +196,7 @@ double smartRad( double a, double b, int n, float rads[][5] )
 	return r;
 }
 
-// дефинира връх и нормален вектор на точка от крайник
+// РґРµС„РёРЅРёСЂР° РІСЂСЉС… Рё РЅРѕСЂРјР°Р»РµРЅ РІРµРєС‚РѕСЂ РЅР° С‚РѕС‡РєР° РѕС‚ РєСЂР°Р№РЅРёРє
 void vertex(float alpha,float beta,float from,float span,float width, float sx1, float sx2, float sy1, float sy2, float sz )
 {
 	OKG_POINT p  = limbal(alpha,beta,from,span,width,sx1,sx2,sy1,sy2,sz);
@@ -207,7 +207,7 @@ void vertex(float alpha,float beta,float from,float span,float width, float sx1,
 	glVertex3f(p.x,p.y,p.z);
 }
 
-// дефинира връх и нормален вектор на точка от става
+// РґРµС„РёРЅРёСЂР° РІСЂСЉС… Рё РЅРѕСЂРјР°Р»РµРЅ РІРµРєС‚РѕСЂ РЅР° С‚РѕС‡РєР° РѕС‚ СЃС‚Р°РІР°
 void hertex(float alpha,float beta, int m, float rads[][5], float r=1 )
 {
 	OKG_POINT p  = spherical(alpha,beta,r*smartRad(alpha,beta,m,rads));
@@ -218,7 +218,7 @@ void hertex(float alpha,float beta, int m, float rads[][5], float r=1 )
 	glVertex3f(p.x,p.y,p.z);
 }
 
-// рисува крайник
+// СЂРёСЃСѓРІР° РєСЂР°Р№РЅРёРє
 void drawLimb( float from, float span, float width, float sx1, float sy1, float sx2, float sy2, float sz, bool useColor=true )
 {
 	if( useColor ) glColor3f(0,0.4,0.45);
@@ -236,10 +236,10 @@ void drawLimb( float from, float span, float width, float sx1, float sy1, float 
         }
         glEnd( );
     }
-    glTranslatef(0,0,sz); // преместваме се в края на крайника
+    glTranslatef(0,0,sz); // РїСЂРµРјРµСЃС‚РІР°РјРµ СЃРµ РІ РєСЂР°СЏ РЅР° РєСЂР°Р№РЅРёРєР°
 }
 
-// рисува става
+// СЂРёСЃСѓРІР° СЃС‚Р°РІР°
 void drawJoint( float r )
 {
 	glColor3f(1,0.5,0);
@@ -259,7 +259,7 @@ void drawJoint( float r )
     }
 }
 
-// рисува оцветена с ленти глава
+// СЂРёСЃСѓРІР° РѕС†РІРµС‚РµРЅР° СЃ Р»РµРЅС‚Рё РіР»Р°РІР°
 void drawHead( int n, float rads[][5] )
 {
 	double alpha = PI-PI/2;
@@ -285,61 +285,61 @@ void drawHead( int n, float rads[][5] )
 	}
 }
 
-// рисува крак в дадена поза
+// СЂРёСЃСѓРІР° РєСЂР°Рє РІ РґР°РґРµРЅР° РїРѕР·Р°
 void drawLeg(float angle[])
 {
 	glPushMatrix();
 		drawJoint(0.5);
-		turnForward(angle[0]);	// завъртане на крака
+		turnForward(angle[0]);	// Р·Р°РІСЉСЂС‚Р°РЅРµ РЅР° РєСЂР°РєР°
 		turnSideway(angle[1]);
 		drawLimb (-90,230,0.3,	0.9,1, 0.7,1, 3);
 		drawJoint(0.3);
-		turnForward(angle[2]);	// завъртане на коляното
+		turnForward(angle[2]);	// Р·Р°РІСЉСЂС‚Р°РЅРµ РЅР° РєРѕР»СЏРЅРѕС‚Рѕ
 		drawLimb (-90,300,0.2,	0.5,0.7, 0.4,0.5, 3);
 		drawJoint(0.2);
 		glTranslatef(0,0,0.3);
-		turnForward(90);		// завъртане на ходилото
+		turnForward(90);	// Р·Р°РІСЉСЂС‚Р°РЅРµ РЅР° С…РѕРґРёР»РѕС‚Рѕ
 		turnForward(angle[3]);
 		glTranslatef(0,0,-0.4);
 		drawLimb (-90,420,0.1,	0.6,0.5, 0.9,0.2, 1.5);
 	glPopMatrix();
 }
 
-// рисува ръка в дадена поза
+// СЂРёСЃСѓРІР° СЂСЉРєР° РІ РґР°РґРµРЅР° РїРѕР·Р°
 void drawHand(float angle[])
 {
 	glPushMatrix();
 		drawJoint(0.3);
-		turnSideway(angle[0]);	// завъртане в рамото
+		turnSideway(angle[0]);	// Р·Р°РІСЉСЂС‚Р°РЅРµ РІ СЂР°РјРѕС‚Рѕ
 		turnForward(angle[1]);
 		turnAround(angle[2]);
 		drawLimb (-90,200,0.4,	0.5,0.6, 0.9,0.7, 2.5);
 		drawJoint(0.25);
-		turnForward(angle[3]);	// завъртане в лакъта
-		drawLimb (-90,180,0.2,	0.5,0.5, 0.4,0.3, 2);
+		turnForward(angle[3]);	// Р·Р°РІСЉСЂС‚Р°РЅРµ РІ Р»Р°РєСЉС‚СЏ
+		drawLimb (-90,180,0.2,0.5,0.5, 0.4,0.3, 2);
 		drawJoint(0.15);
-		turnForward(angle[4]);	// завъртане в китката
+		turnForward(angle[4]);	// Р·Р°РІСЉСЂС‚Р°РЅРµ РІ РєРёС‚РєР°С‚Р°
 		turnSideway(angle[5]);
 		turnAround(angle[6]);
 		drawLimb (-90,180,0.3,	0.4,0.3, 0.6,0.1, 0.9);
 	glPopMatrix();
 }
 
-// рисува тяло в дадена поза
+// СЂРёСЃСѓРІР° С‚СЏР»Рѕ РІ РґР°РґРµРЅР° РїРѕР·Р°
 void drawBody(float pos[], float ori[], float scale[], float waist[], float head[], float leftHand[], float rightHand[], float leftLeg[], float rightLeg[])
 {
 	glPushMatrix();
-		glTranslatef(pos[0],pos[1],pos[2]); 	// позиция на тялото
-		turnAround(ori[0]);						// обща ориентация на тялото
+		glTranslatef(pos[0],pos[1],pos[2]); 	// РїРѕР·РёС†РёСЏ РЅР° С‚СЏР»РѕС‚Рѕ
+		turnAround(ori[0]);			// РѕР±С‰Р° РѕСЂРёРµРЅС‚Р°С†РёСЏ РЅР° С‚СЏР»РѕС‚Рѕ
 		turnForward(ori[1]);
 
-		glScalef(scale[1],scale[3],scale[1]);	// размер на тялото
+		glScalef(scale[1],scale[3],scale[1]);	// СЂР°Р·РјРµСЂ РЅР° С‚СЏР»РѕС‚Рѕ
 
 		glPushMatrix();
-			glTranslatef(0,-0.1,-0.3);			// таз
+			glTranslatef(0,-0.1,-0.3);	// С‚Р°Р·
 			drawLimb(-120,30,0.9,	2,1.5, 0.7,0.4, 1.5);
 			drawJoint(0.2);
-			turnForward(waist[0]);				// завъртане в кръста
+			turnForward(waist[0]);		// Р·Р°РІСЉСЂС‚Р°РЅРµ РІ РєСЂСЉСЃС‚Р°
 			turnAround(waist[1]);
 			drawLimb(-130,150,0.4,	1.2,1, 1.9,0.9, 3.0, true);
 
@@ -347,12 +347,12 @@ void drawBody(float pos[], float ori[], float scale[], float waist[], float head
 				glTranslatef(0,0,-0.5);
 				turnForward(180);
 				glTranslatef(-1.1,0,0);
-				drawHand(leftHand);				// лява ръка
+				drawHand(leftHand);	// Р»СЏРІР° СЂСЉРєР°
 				glTranslatef(2.2,0,0);
-				drawHand(rightHand);			// дясна ръка
+				drawHand(rightHand);	// РґСЏСЃРЅР° СЂСЉРєР°
 			glPopMatrix();
 
-			turnAround(head[0]+180);			// завъртане във врата и глава
+			turnAround(head[0]+180);	// Р·Р°РІСЉСЂС‚Р°РЅРµ РІСЉРІ РІСЂР°С‚Р° Рё РіР»Р°РІР°
 			turnForward(head[1]);
 			turnSideway(head[2]);
 			glTranslatef(0,-0.3,0.85);
@@ -363,9 +363,9 @@ void drawBody(float pos[], float ori[], float scale[], float waist[], float head
 
 		turnForward(180);
 		glTranslatef(0.7,0,0);
-		drawLeg(rightLeg);						// десен крак
+		drawLeg(rightLeg);			// РґРµСЃРµРЅ РєСЂР°Рє
 		glTranslatef(-1.4,0,0);
-		drawLeg(leftLeg);						// ляв крак
+		drawLeg(leftLeg);			// Р»СЏРІ РєСЂР°Рє
 	glPopMatrix();
 }
 
@@ -408,16 +408,16 @@ int main()
         float dist=15+5*cos(t);
         gluLookAt(dist*cos(3*t),dist*sin(3*t),dist*0.3, 0,0,0, 0,0,1 );
 
-        // кутийката за пръстена
+        // РєСѓС‚РёР№РєР°С‚Р° Р·Р° РїСЂСЉСЃС‚РµРЅР°
         glColor3ub(255, 0, 0);
         drawParallelepiped(-1.5, 2.2, -1.35, 0.2, 0.2, 0.1);
         drawParallelepiped(-1.5, 2.4, -1.2, 0.2, 0.07, 0.3);
 
-        // пръстенът
+        // РїСЂСЉСЃС‚РµРЅСЉС‚
         glColor3f(1,0.5,0);
         drawTwoCylinders(-1.5, 2.1, -1.2, 0.15,0.09,0.1);
 
-		{	// жената
+		{	// Р¶РµРЅР°С‚Р°
 			float position[]={0,0,0};
 			float orientation[]={0,0};
 			float scale[]={1,1,1,1};
@@ -430,7 +430,7 @@ int main()
 			drawBody (position,orientation,scale,waist,head,leftHand,rightHand,leftLeg,rightLeg);
 		}
 
-		{	// мъжът
+		{	// РјСЉР¶СЉС‚
 			float position[]={0,6,-2.7};
 			float orientation[]={180,-10};
 			float scale[]={1.1,1.1,1.1,1.1};
