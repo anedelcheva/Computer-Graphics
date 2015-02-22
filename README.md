@@ -1,2 +1,2 @@
 # Computer-Graphics
-Homework in C++-kanji and scene
+Homework in C++-kanji and a scene with mannequins
