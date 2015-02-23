@@ -48,7 +48,7 @@ void drawParallelepiped(float x, float y, float z, float a, float b, float c)
         glVertex3f(x-a, y+b, z-c);
     glEnd();
 
-    // ðèñóâàíå íà ñòåíà îòêúì -X
+    // рисуване на стена откъм -X
     glBegin(GL_POLYGON);
         glNormal3f(+1.0, 0.0, 0.0);
         glVertex3f(x+a, y+b, z+c);
